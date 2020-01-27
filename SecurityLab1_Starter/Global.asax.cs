@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SecurityLab1_Starter.Models;
+using SecurityLab1_Starter.Infrastructure;
 
 namespace SecurityLab1_Starter
 {
@@ -16,7 +17,9 @@ namespace SecurityLab1_Starter
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);  
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DependencyResolver.SetResolver(new
+            Infrastructure.NinjectDependencyResolver());
         }
 
         protected void Application_Error()
